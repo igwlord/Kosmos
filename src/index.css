@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #d2bbff;
+  --color-primary-container: #7c3aed;
+  --color-on-primary-container: #ede0ff;
+  --color-secondary: #ddfcff;
+  --color-secondary-container: #00f1fe;
+  --color-tertiary: #4edea3;
+  --color-background: #111317;
+  --color-surface: #111317;
+  --color-surface-variant: #333539;
+  --color-surface-container-lowest: #0c0e12;
+  --color-surface-container-high: #282a2e;
+  --color-surface-container-highest: #333539;
+  --color-on-surface: #e2e2e8;
+  --color-on-surface-variant: #ccc3d8;
+  --color-outline-variant: #4a4455;
+
+  --font-display-lg: "Geist", sans-serif;
+  --font-headline-md: "Geist", sans-serif;
+  --font-body-base: "Geist", sans-serif;
+  --font-label-caps: "Space Mono", monospace;
+  --font-value-mono: "Space Mono", monospace;
+
+  --spacing-panel-margin: 24px;
+  --spacing-control-padding: 8px;
+  --spacing-module-gap: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .glow-primary {
+      box-shadow: 0 0 20px rgba(210, 187, 255, 0.3), 0 0 40px rgba(210, 187, 255, 0.1);
+  }
+  .glow-secondary {
+      box-shadow: 0 0 20px rgba(0, 241, 254, 0.3), 0 0 40px rgba(0, 241, 254, 0.1);
+  }
+  .glow-tertiary {
+      box-shadow: 0 0 20px rgba(78, 222, 163, 0.3), 0 0 40px rgba(78, 222, 163, 0.1);
+  }
+  .glass-panel {
+      background: rgba(17, 19, 23, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8), inset 0 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+  .recessed-display {
+      background-color: #050608;
+      box-shadow: inset 0px 4px 12px rgba(0,0,0,0.9);
+      border: 1px solid rgba(255,255,255,0.03);
+  }
+  .tactile-btn {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+      background: linear-gradient(180deg, #2d3036 0%, #17191d 100%);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+  }
+  .tactile-btn:hover {
+      background: linear-gradient(180deg, #383b42 0%, #1e2126 100%);
+      transform: translateY(-1px);
+  }
+  .site-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      background-image: linear-gradient(to bottom, rgba(17, 19, 23, 0.55), rgba(17, 19, 23, 0.97)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkNBVIaTSwn9mb5702-cPP7FAlxZ6xm5rQC0NVQuA0Ma548gPbeLGW2washhvx8MemyVLQzAydtaf-1DeeN4fojLkPPz0r3PIi27tEw3wzRO_AhKHT9sSEoQEA_DFXhQ1bCse--QoxWrtIkDDh_YRkSDRU689wNmzHS1RlvOSA7DNJtCDiqMpLNpeYK69ihtnsFD9hrMChIgEa1BqIbRHz39jCL-VKDuTiSZhKoann5dytrDbzRDX-g1CWGSVSTFEGISr6Ze36vemY');
+      background-size: cover;
+      background-position: center;
+  }
+  .neon-neptune {
+      color: #39ff8a;
+      text-shadow: 0 0 6px rgba(57, 255, 138, 0.25);
+      transition: text-shadow 0.3s ease, color 0.3s ease;
+  }
+  .neon-neptune:hover {
+      color: #6dffab;
+      text-shadow: 0 0 10px rgba(57, 255, 138, 0.55), 0 0 20px rgba(57, 255, 138, 0.25);
+  }
+  .nav-glass {
+      background: rgba(17, 19, 23, 0.6);
+      backdrop-filter: blur(16px) saturate(180%);
+  }
+  .section-glow-mask {
+      mask-image: radial-gradient(circle at center, black, transparent 80%);
+  }
+}
