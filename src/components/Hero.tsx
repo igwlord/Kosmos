@@ -8,7 +8,7 @@ export function Hero() {
 
   return (
     <section className="w-full min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-      <div className="w-full max-w-7xl px-panel-margin py-24 flex flex-col md:flex-row items-center gap-16 relative z-10">
+      <div className="w-full max-w-7xl px-panel-margin py-16 md:py-24 flex flex-col md:flex-row items-center gap-10 md:gap-16 relative z-10">
         <div
           ref={textRef}
           className={`flex-1 flex flex-col gap-8 transition-all duration-700 ease-out ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
@@ -23,12 +23,12 @@ export function Hero() {
           <p className="font-body-base text-lg text-on-surface-variant max-w-xl leading-relaxed">
             {t.hero.description}
           </p>
-          <div className="flex flex-wrap gap-4 mt-4">
-            <button className="tactile-btn text-primary font-label-caps px-8 py-4 rounded-xl glow-primary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3 border border-primary/20 cursor-pointer">
+          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <button className="tactile-btn text-primary font-label-caps px-8 py-4 rounded-xl glow-primary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-primary/20 cursor-pointer w-full sm:w-auto">
               <span className="material-symbols-outlined text-[18px]">desktop_windows</span>
               {t.hero.windows}
             </button>
-            <button className="tactile-btn text-on-surface font-label-caps px-8 py-4 rounded-xl transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3 border border-outline-variant/30 cursor-pointer">
+            <button className="tactile-btn text-tertiary font-label-caps px-8 py-4 rounded-xl glow-tertiary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-tertiary/20 cursor-pointer w-full sm:w-auto">
               <span className="material-symbols-outlined text-[18px]">laptop_mac</span>
               {t.hero.macos}
             </button>
