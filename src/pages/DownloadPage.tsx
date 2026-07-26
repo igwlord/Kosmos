@@ -29,7 +29,7 @@ export function DownloadPage() {
               <h2 className="font-headline-md text-2xl text-on-surface">{t.download.windowsTitle}</h2>
               <p className="font-value-mono text-[11px] text-on-surface-variant mt-2 tracking-wide">{t.download.windowsSpec}</p>
               <a
-                href="https://drive.google.com/file/d/1TrhEsnne_eMk1BAXFj5ZcHfrkGdPzrLZ/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1zbvkZZLs9oolXxCJFvXbbeqUGjWUfDUY/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="tactile-btn text-primary font-label-caps px-8 py-4 rounded-xl glow-primary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-primary/20 cursor-pointer w-full mt-8"
@@ -49,7 +49,7 @@ export function DownloadPage() {
               <h2 className="font-headline-md text-2xl text-on-surface">{t.download.macTitle}</h2>
               <p className="font-value-mono text-[11px] text-on-surface-variant mt-2 tracking-wide">{t.download.macSpec}</p>
               <a
-                href="https://drive.google.com/file/d/1PAzmIRpIg8ujVtozZ11WEzt-CRRsXqAA/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1_BWbWoQwi0Dyb3OAWneDAoefroaB48Wu/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="tactile-btn text-tertiary font-label-caps px-8 py-4 rounded-xl glow-tertiary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-tertiary/20 cursor-pointer w-full mt-8"
