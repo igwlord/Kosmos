@@ -96,6 +96,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 Kosmos Audio',
+      manual: 'User Manual',
     },
     download: {
       back: 'Back to Kosmos',
@@ -204,6 +205,7 @@ export const translations = {
     },
     footer: {
       copyright: '© 2026 Kosmos Audio',
+      manual: 'Manual de uso',
     },
     download: {
       back: 'Volver a Kosmos',

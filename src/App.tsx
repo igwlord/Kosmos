@@ -11,12 +11,17 @@ import { Features } from './components/Features';
 import { Installation } from './components/Installation';
 import { Footer } from './components/Footer';
 import { DownloadPage } from './pages/DownloadPage';
+import { ManualPage } from './pages/ManualPage';
 
 function AppRoutes() {
   const { path } = useRouter();
 
   if (path === '/download') {
     return <DownloadPage />;
+  }
+
+  if (path === '/manual') {
+    return <ManualPage />;
   }
 
   return (
