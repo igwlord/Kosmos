@@ -1,17 +1,23 @@
-import { MANUAL_SECTIONS } from './manualSections';
+import type { ManualSection } from './manualSections';
 
 interface ManualTocProps {
   activeId: string | null;
+  sections: ManualSection[];
+  visibleIds: string[];
+  title: string;
+  mobileTitle: string;
 }
 
-export function ManualToc({ activeId }: ManualTocProps) {
+export function ManualToc({ activeId, sections, visibleIds, title, mobileTitle }: ManualTocProps) {
+  const visibleSections = sections.filter((section) => visibleIds.includes(section.id));
+
   return (
     <>
       <aside className="toc" aria-label="Índice del manual">
-        <p className="toc-title mini-label">En esta guía</p>
+        <p className="toc-title mini-label">{title}</p>
         <nav>
-          {MANUAL_SECTIONS.map((section) => (
-            <a key={section.id} href={`#${section.id}`} className={activeId === section.id ? 'active' : ''}>
+          {visibleSections.map((section) => (
+            <a key={section.id} href={`#${section.id}`} aria-current={activeId === section.id ? 'location' : undefined} className={activeId === section.id ? 'active' : ''}>
               {section.label}
             </a>
           ))}
@@ -19,9 +25,9 @@ export function ManualToc({ activeId }: ManualTocProps) {
       </aside>
 
       <details className="mobile-toc">
-        <summary>Índice del manual</summary>
+        <summary>{mobileTitle}</summary>
         <nav>
-          {MANUAL_SECTIONS.filter((section) => !section.hideOnMobile).map((section) => (
+          {visibleSections.map((section) => (
             <a key={section.id} href={`#${section.id}`}>
               {section.mobileLabel}
             </a>

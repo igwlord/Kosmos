@@ -7,7 +7,7 @@ export function InterfaceSection({ registerSection }: ManualSectionProps) {
       <span className="section-tag mini-label">02 · Reglas comunes</span>
       <h2>Interfaz y controles</h2>
       <h3>Barra superior</h3>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Controles de la barra superior">
         <table>
           <thead>
             <tr>

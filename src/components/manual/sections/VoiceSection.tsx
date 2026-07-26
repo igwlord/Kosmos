@@ -22,7 +22,7 @@ export function VoiceSection({ registerSection }: ManualSectionProps) {
       </p>
 
       <h3>Osciladores 1, 2 y 3</h3>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Controles de los osciladores">
         <table>
           <thead>
             <tr>
@@ -53,7 +53,7 @@ export function VoiceSection({ registerSection }: ManualSectionProps) {
         <strong>ENV 1</strong> controla la amplitud principal. <strong>ENV 2 y ENV 3</strong> son fuentes para animar
         otros parámetros.
       </p>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Etapas de las envolventes">
         <table>
           <thead>
             <tr>

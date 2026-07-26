@@ -12,10 +12,14 @@ export function DownloadPage() {
           to="/"
           className="font-label-caps text-[11px] text-on-surface-variant hover:text-primary tracking-widest transition-colors mb-10 flex items-center gap-2"
         >
-          <span className="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span className="material-symbols-outlined text-[16px]" aria-hidden="true">arrow_back</span>
           {t.download.back}
         </Link>
 
+        <div className="flex flex-wrap justify-center gap-2 mb-5" aria-label={`${t.download.version} · ${t.download.status}`}>
+          <span className="font-label-caps text-xs tracking-widest text-primary border border-primary/20 bg-primary/10 rounded-full px-3 py-1.5">{t.download.version}</span>
+          <span className="font-label-caps text-xs tracking-widest text-tertiary border border-tertiary/20 bg-tertiary/10 rounded-full px-3 py-1.5">{t.download.status}</span>
+        </div>
         <h1 className="font-display-lg text-4xl md:text-5xl text-on-surface text-center">{t.download.heading}</h1>
         <p className="text-on-surface-variant text-lg mt-4 text-center max-w-xl">{t.download.subheading}</p>
 
@@ -27,14 +31,16 @@ export function DownloadPage() {
                 <WindowsIcon className="w-7 h-7 text-primary" />
               </div>
               <h2 className="font-headline-md text-2xl text-on-surface">{t.download.windowsTitle}</h2>
-              <p className="font-value-mono text-[11px] text-on-surface-variant mt-2 tracking-wide">{t.download.windowsSpec}</p>
+              <p className="font-value-mono text-xs text-on-surface-variant mt-2 tracking-wide">{t.download.windowsSpec}</p>
+              <p className="font-label-caps text-xs text-primary/90 mt-3 tracking-wider">{t.download.fileType}</p>
               <a
                 href="https://drive.google.com/file/d/1zbvkZZLs9oolXxCJFvXbbeqUGjWUfDUY/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-describedby="download-host-note"
                 className="tactile-btn text-primary font-label-caps px-8 py-4 rounded-xl glow-primary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-primary/20 cursor-pointer w-full mt-8"
               >
-                <span className="material-symbols-outlined text-[18px]">download</span>
+                <span className="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>
                 {t.download.windowsCta}
               </a>
             </div>
@@ -47,19 +53,25 @@ export function DownloadPage() {
                 <AppleIcon className="w-7 h-7 text-tertiary" />
               </div>
               <h2 className="font-headline-md text-2xl text-on-surface">{t.download.macTitle}</h2>
-              <p className="font-value-mono text-[11px] text-on-surface-variant mt-2 tracking-wide">{t.download.macSpec}</p>
+              <p className="font-value-mono text-xs text-on-surface-variant mt-2 tracking-wide">{t.download.macSpec}</p>
+              <p className="font-label-caps text-xs text-tertiary/90 mt-3 tracking-wider">{t.download.fileType}</p>
               <a
                 href="https://drive.google.com/file/d/1_BWbWoQwi0Dyb3OAWneDAoefroaB48Wu/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-describedby="download-host-note"
                 className="tactile-btn text-tertiary font-label-caps px-8 py-4 rounded-xl glow-tertiary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-tertiary/20 cursor-pointer w-full mt-8"
               >
-                <span className="material-symbols-outlined text-[18px]">download</span>
+                <span className="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>
                 {t.download.macCta}
               </a>
             </div>
           </div>
         </div>
+        <p id="download-host-note" className="text-on-surface-variant text-sm text-center mt-7 flex items-center justify-center gap-2">
+          <span className="material-symbols-outlined text-base text-primary" aria-hidden="true">open_in_new</span>
+          {t.download.hostedNote}
+        </p>
       </div>
     </section>
   );

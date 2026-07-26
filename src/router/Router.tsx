@@ -8,6 +8,34 @@ interface RouterContextValue {
 
 const RouterContext = createContext<RouterContextValue | null>(null);
 
+export function scrollToPageSection(id: string) {
+  const element = document.getElementById(id);
+  if (!element) return false;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const navHeight = document.querySelector('nav')?.getBoundingClientRect().height ?? 80;
+  const rect = element.getBoundingClientRect();
+  let documentTop = 0;
+  let offsetElement: HTMLElement | null = element;
+
+  while (offsetElement) {
+    documentTop += offsetElement.offsetTop;
+    offsetElement = offsetElement.offsetParent as HTMLElement | null;
+  }
+
+  const availableHeight = Math.max(0, window.innerHeight - navHeight);
+  const centeredHeight = Math.min(rect.height, availableHeight * 0.72);
+  const breathingRoom = Math.max(24, (availableHeight - centeredHeight) / 2);
+  const top = Math.max(0, documentTop - navHeight - breathingRoom);
+
+  window.scrollTo({
+    top,
+    behavior: reduceMotion ? 'auto' : 'smooth',
+  });
+
+  return true;
+}
+
 export function RouterProvider({ children }: { children: ReactNode }) {
   const [path, setPath] = useState(window.location.pathname);
 
@@ -31,11 +59,7 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     let attempts = 0;
 
     const tryScroll = () => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
+      if (scrollToPageSection(id)) return;
       attempts += 1;
       if (attempts < 30) rafId = requestAnimationFrame(tryScroll);
     };
