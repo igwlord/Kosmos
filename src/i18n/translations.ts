@@ -4,6 +4,7 @@ export const translations = {
   en: {
     nav: {
       home: 'HOME',
+      engine: 'ENGINE',
       matrix: 'MATRIX',
       effects: 'EFFECTS',
       install: 'INSTALL',
@@ -36,32 +37,48 @@ export const translations = {
       imageAlt: 'Kosmos Main UI Interface',
     },
     features: {
+      engineEyebrow: 'SOUND ARCHITECTURE',
       heading: 'Engineered for Precision',
+      description: 'A clear signal path for shaping the source, adding character, and creating movement without losing control of the sound.',
       voice: {
         tag: 'OSCILLATORS & FILTERS',
         title: 'The Voice Engine',
         description:
           'Experience surgical control with high-resolution visualizers, dual-mode filters, and up to 3 spectral oscillators per voice.',
+        signalFlow: 'OSCILLATORS → FILTERS → ENVELOPES',
+        spec1Title: 'Three oscillators',
+        spec1Body: 'Layer spectral waveforms and shape each source independently.',
+        spec2Title: 'Dual filters',
+        spec2Body: 'Sculpt brightness and resonance with visual feedback.',
+        spec3Title: 'Visual envelopes',
+        spec3Body: 'Adjust precise anchor points and see the contour instantly.',
         imageAlt: 'Kosmos Voice Engine Interface',
       },
       fx: {
         tag: 'FX CHAIN',
         title: 'Studio Rack',
         description:
-          'Integrated rack-style FX processing featuring lush reverb, granular delay, and tube distortion.',
+          'A fixed four-stage chain takes the sound from character to movement and finally into space. Each stage can be enabled and adjusted independently.',
+        card1Title: 'Character and saturation',
+        card1Body: 'Distortion adds weight and color with direct control over Drive, Tone, and Mix.',
+        card2Title: 'Movement and depth',
+        card2Body: 'Chorus widens the source while tempo-synced Delay builds rhythmic motion.',
+        card3Title: 'Space and dimension',
+        card3Body: 'Reverb defines the final room with Size, Damp, and Mix controls.',
         imageAlt: 'Kosmos FX Rack Interface',
       },
       modulation: {
         tag: 'ROUTING SYSTEM',
         title: 'Matrix Modulation',
         description:
-          'Route 11 modulation sources to 10 destinations across up to 8 simultaneous routes. Visualize every connection in a matrix designed for fast sound shaping.',
-        sources: '11 MOD SOURCES',
-        destinations: '10 DESTINATIONS',
+          'Connect envelopes, LFOs, macros, and the modulation wheel to key sound parameters. Shape movement visually and adjust every connection from one clear matrix.',
+        sources: 'VISUAL ROUTING',
+        destinations: 'UP TO 8 ROUTES',
         imageAlt: 'Kosmos Modulation Matrix UI',
       },
     },
     installation: {
+      eyebrow: 'QUICK SETUP · THREE STEPS',
       heading: 'Installation Guide',
       subheading:
         "Kosmos will be ready in just a few minutes. The package includes the app, the plugin, and the complete preset library.",
@@ -142,6 +159,7 @@ export const translations = {
   es: {
     nav: {
       home: 'INICIO',
+      engine: 'MOTOR',
       matrix: 'MATRIZ',
       effects: 'EFECTOS',
       install: 'INSTALAR',
@@ -174,32 +192,48 @@ export const translations = {
       imageAlt: 'Interfaz principal de Kosmos',
     },
     features: {
+      engineEyebrow: 'ARQUITECTURA DE SONIDO',
       heading: 'Diseñado para la Precisión',
+      description: 'Un recorrido claro para moldear la fuente, sumar carácter y crear movimiento sin perder el control del sonido.',
       voice: {
         tag: 'OSCILADORES Y FILTROS',
         title: 'El Motor de Voz',
         description:
           'Controlá cada detalle con visualizadores de alta resolución, filtros de doble modo y hasta 3 osciladores espectrales por voz.',
+        signalFlow: 'OSCILADORES → FILTROS → ENVOLVENTES',
+        spec1Title: 'Tres osciladores',
+        spec1Body: 'Combiná formas de onda espectrales y trabajá cada fuente de manera independiente.',
+        spec2Title: 'Filtros dobles',
+        spec2Body: 'Moldeá brillo y resonancia con respuesta visual inmediata.',
+        spec3Title: 'Envolventes visuales',
+        spec3Body: 'Ajustá puntos de anclaje precisos y observá el contorno al instante.',
         imageAlt: 'Interfaz del motor de voz de Kosmos',
       },
       fx: {
         tag: 'CADENA DE FX',
         title: 'Rack de Estudio',
         description:
-          'Procesamiento de efectos tipo rack integrado, con reverb envolvente, delay granular y distorsión a válvula.',
+          'Una cadena fija de cuatro etapas lleva el sonido desde el carácter y el movimiento hasta el espacio final. Cada etapa se activa y ajusta por separado.',
+        card1Title: 'Carácter y saturación',
+        card1Body: 'Distortion suma peso y color con controles directos de Drive, Tone y Mix.',
+        card2Title: 'Movimiento y profundidad',
+        card2Body: 'Chorus amplía la fuente y Delay sincronizado crea movimiento rítmico.',
+        card3Title: 'Espacio y dimensión',
+        card3Body: 'Reverb define el ambiente final mediante Size, Damp y Mix.',
         imageAlt: 'Interfaz del rack de FX de Kosmos',
       },
       modulation: {
         tag: 'SISTEMA DE RUTEO',
         title: 'Matriz de Modulación',
         description:
-          'Conectá 11 fuentes de modulación con 10 destinos en hasta 8 rutas simultáneas. Visualizá cada conexión en una matriz pensada para diseñar sonidos con rapidez.',
-        sources: '11 FUENTES DE MOD',
-        destinations: '10 DESTINOS',
+          'Conectá envolventes, LFOs, macros y la rueda de modulación con los parámetros clave del sonido. Creá movimiento y ajustá cada conexión desde una matriz visual y clara.',
+        sources: 'RUTEO VISUAL',
+        destinations: 'HASTA 8 RUTAS',
         imageAlt: 'Interfaz de la matriz de modulación de Kosmos',
       },
     },
     installation: {
+      eyebrow: 'CONFIGURACIÓN RÁPIDA · TRES PASOS',
       heading: 'Guía de instalación',
       subheading:
         'Kosmos estará listo en pocos minutos. El paquete incluye la aplicación, el plugin y la biblioteca completa de presets.',

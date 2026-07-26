@@ -1,98 +1,163 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import { useReveal } from '../hooks/useReveal';
 
+interface SectionIntroProps {
+  eyebrow: string;
+  title: string;
+  description: string;
+  align?: 'center' | 'left';
+}
+
+function SectionIntro({ eyebrow, title, description, align = 'left' }: SectionIntroProps) {
+  const alignment = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left';
+
+  return (
+    <div className={`flex max-w-3xl flex-col gap-4 ${alignment}`}>
+      <span className="font-label-caps text-[11px] tracking-[0.2em] text-primary">{eyebrow}</span>
+      <h2 className="font-display-lg text-4xl leading-tight text-on-surface md:text-5xl">{title}</h2>
+      <p className="max-w-2xl text-base leading-relaxed text-on-surface-variant md:text-lg">{description}</p>
+    </div>
+  );
+}
+
 export function Features() {
   const { t } = useLanguage();
-  const [headingRef, headingVisible] = useReveal<HTMLDivElement>();
+  const [engineIntroRef, engineIntroVisible] = useReveal<HTMLDivElement>();
   const [voiceRef, voiceVisible] = useReveal<HTMLDivElement>();
   const [fxRef, fxVisible] = useReveal<HTMLDivElement>();
   const [modRef, modVisible] = useReveal<HTMLDivElement>();
 
+  const voiceSpecs = [
+    { icon: 'graphic_eq', title: t.features.voice.spec1Title, body: t.features.voice.spec1Body, tone: 'text-primary bg-primary/10 border-primary/20' },
+    { icon: 'filter_alt', title: t.features.voice.spec2Title, body: t.features.voice.spec2Body, tone: 'text-secondary-container bg-secondary-container/10 border-secondary-container/20' },
+    { icon: 'show_chart', title: t.features.voice.spec3Title, body: t.features.voice.spec3Body, tone: 'text-tertiary bg-tertiary/10 border-tertiary/20' },
+  ];
+
+  const effectCards = [
+    { number: '01', icon: 'bolt', title: t.features.fx.card1Title, body: t.features.fx.card1Body, tone: 'text-primary bg-primary/10 border-primary/20' },
+    { number: '02', icon: 'waves', title: t.features.fx.card2Title, body: t.features.fx.card2Body, tone: 'text-secondary-container bg-secondary-container/10 border-secondary-container/20' },
+    { number: '03', icon: 'blur_on', title: t.features.fx.card3Title, body: t.features.fx.card3Body, tone: 'text-tertiary bg-tertiary/10 border-tertiary/20' },
+  ];
+
   return (
-    <section className="w-full max-w-7xl px-panel-margin py-16 md:py-32">
-      <div
-        ref={headingRef}
-        className={`flex flex-col items-center mb-10 md:mb-20 transition-all duration-700 ease-out ${headingVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-      >
-        <h2 className="font-display-lg text-4xl text-on-surface text-center">{t.features.heading}</h2>
-        <div className="h-1 w-24 bg-primary mt-6 rounded-full"></div>
-      </div>
-      <div className="flex flex-col gap-8 md:grid md:grid-cols-12 md:gap-module-gap md:auto-rows-[450px]">
-        {/* Main UI Block (Voice) */}
-        <div
-          ref={voiceRef}
-          className={`md:col-span-8 glass-panel rounded-2xl p-5 md:p-8 flex flex-col relative overflow-hidden group transition-all duration-700 ease-out ${voiceVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          id="main-ui"
-        >
-          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 blur-[100px] rounded-full -mr-32 -mt-32 transition-all duration-1000 group-hover:bg-primary/20"></div>
-          <div className="relative z-10 flex flex-col md:h-full">
-            <div className="flex justify-between items-start">
+    <>
+      <section className="w-full border-t border-white/5 py-20 md:py-32">
+        <div id="engine" className="mx-auto w-full max-w-7xl px-panel-margin">
+          <div
+            ref={engineIntroRef}
+            className={`transition-all duration-700 ease-out ${engineIntroVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+          >
+            <SectionIntro
+              eyebrow={t.features.engineEyebrow}
+              title={t.features.heading}
+              description={t.features.description}
+              align="center"
+            />
+          </div>
+
+          <div
+            ref={voiceRef}
+            className={`glass-panel relative mt-12 overflow-hidden rounded-2xl p-6 transition-all duration-700 ease-out md:mt-16 md:p-10 ${voiceVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+          >
+            <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-primary/10 blur-[100px]" aria-hidden="true" />
+            <div className="relative z-10 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
               <div>
-                <span className="font-label-caps text-primary tracking-[0.2em] text-[11px]">{t.features.voice.tag}</span>
-                <h3 className="font-headline-md text-3xl text-secondary mt-1">{t.features.voice.title}</h3>
+                <span className="font-label-caps text-[11px] tracking-[0.2em] text-primary">{t.features.voice.tag}</span>
+                <h3 className="mt-2 font-headline-md text-3xl text-on-surface md:text-4xl">{t.features.voice.title}</h3>
+                <p className="mt-4 max-w-xl leading-relaxed text-on-surface-variant">{t.features.voice.description}</p>
+                <div className="mt-8 flex items-center gap-3 text-xs text-on-surface-variant">
+                  <span className="h-px w-12 bg-gradient-to-r from-primary to-transparent" aria-hidden="true" />
+                  <span className="font-label-caps tracking-widest">{t.features.voice.signalFlow}</span>
+                </div>
               </div>
-              <span className="material-symbols-outlined text-primary/40 text-4xl" aria-hidden="true">waves</span>
-            </div>
-            <p className="font-body-base text-on-surface-variant mt-4 max-w-lg leading-relaxed">{t.features.voice.description}</p>
-            <div className="mt-auto pt-8 rounded-xl overflow-hidden border border-white/5 shadow-2xl relative">
-              <img alt={t.features.voice.imageAlt} width={800} height={300} loading="lazy" decoding="async" sizes="(min-width: 768px) 66vw, 100vw" className="w-full object-cover rounded-t-lg transition-transform duration-700 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_up5HYGetUoL0pCjPwxxy4emThsAskUq2ZrREMB9iivL0TA1uOcIXYpZA-dwpod0LZI7IytJQrtvNrkD_D_6O0gXE0qGhkiQH3rEBG7BF-4bOvLUVEUf3U6KFOW8feShZDTjKfXVsPdrNp_8RyEDE-7Jw8CJ3pl92F870VgPEtI3RoZUZFC7ceI1e6z_573s85WsBhbi3FmkLUPOCvTwd2xuHXv5cq8x-Mg6Uj5OFi5FarlzgLVRseRMq6G6KHGQTbCyZ9bhwqgTF" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e12] via-transparent to-transparent"></div>
+
+              <div className="grid gap-4 sm:grid-cols-3">
+                {voiceSpecs.map((spec) => (
+                  <article key={spec.title} className="rounded-xl border border-white/8 bg-surface-container-lowest/75 p-5">
+                    <div className={`flex h-11 w-11 items-center justify-center rounded-xl border ${spec.tone}`}>
+                      <span className="material-symbols-outlined" aria-hidden="true">{spec.icon}</span>
+                    </div>
+                    <h4 className="mt-5 font-headline-md text-lg text-on-surface">{spec.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">{spec.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Studio Grade Effects Block */}
+      <section className="w-full border-y border-secondary-container/10 bg-white/[0.015] py-20 md:py-32">
         <div
-          ref={fxRef}
-          className={`md:col-span-4 glass-panel rounded-2xl p-5 md:p-8 flex flex-col relative overflow-hidden group transition-all duration-700 ease-out delay-100 ${fxVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           id="effects"
+          ref={fxRef}
+          className={`mx-auto w-full max-w-7xl px-panel-margin transition-all duration-700 ease-out ${fxVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
         >
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary-container/10 blur-[80px] rounded-full -ml-20 -mb-20 transition-all duration-1000 group-hover:bg-secondary-container/20"></div>
-          <div className="relative z-10 flex flex-col md:h-full">
-            <div className="flex justify-between items-start">
-              <div>
-                <span className="font-label-caps text-secondary-container tracking-[0.2em] text-[11px]">{t.features.fx.tag}</span>
-                <h3 className="font-headline-md text-3xl text-primary mt-1">{t.features.fx.title}</h3>
-              </div>
-              <span className="material-symbols-outlined text-secondary-container/40 text-4xl" aria-hidden="true">reverb</span>
-            </div>
-            <p className="font-body-base text-on-surface-variant mt-4 leading-relaxed">{t.features.fx.description}</p>
-            <div className="mt-auto rounded-xl overflow-hidden border border-white/5 shadow-2xl relative aspect-[2/1] md:aspect-auto md:h-48">
-              <img alt={t.features.fx.imageAlt} width={400} height={192} loading="lazy" decoding="async" sizes="(min-width: 768px) 33vw, 100vw" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMwOj5IFOA5zIIUGb_2gAwWN42J4r-8XZf9UpL3mPXfBRYSbwb1KsdT0syVyCsoDMd2Khwcfj0XjKpEMsFW1v55tL9VkSi4uRcXnI50vvjI6n9gUR614IH2HZL-EMAUTssbpj7nh7ur78iv7VwDrvUsI_itFE5miu65s1SuKoYPwC6aM-PoKCASZUDM12DR3tGTNSs9My_hTDrLvRzrzl72ZHd9n-TsDEd2jaVPDKKl3qfaELaFjx3xO0y7KB07rmlxByLjXVqALD1" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0c0e12] via-transparent to-transparent opacity-60"></div>
-            </div>
-          </div>
-        </div>
+          <SectionIntro eyebrow={t.features.fx.tag} title={t.features.fx.title} description={t.features.fx.description} />
 
-        {/* Infinite Modulation Block */}
-        <div
-          ref={modRef}
-          className={`md:col-span-12 glass-panel rounded-2xl p-5 md:p-10 flex flex-col md:flex-row gap-6 md:gap-12 relative overflow-hidden items-center group transition-all duration-700 ease-out delay-200 ${modVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-          id="modulation"
-        >
-          <div className="absolute inset-0 bg-tertiary/5 blur-[150px] rounded-full transition-all duration-1000 group-hover:bg-tertiary/10"></div>
-          <div className="relative z-10 flex-1">
-            <span className="font-label-caps text-tertiary tracking-[0.2em] text-[11px]">{t.features.modulation.tag}</span>
-            <h3 className="font-headline-md text-4xl text-tertiary mt-2">{t.features.modulation.title}</h3>
-            <p className="font-body-base text-lg text-on-surface-variant mt-4 max-w-xl leading-relaxed">{t.features.modulation.description}</p>
-            <div className="flex flex-wrap gap-3 md:gap-4 mt-6 md:mt-8">
-              <div className="flex items-center gap-2 text-tertiary bg-tertiary/10 px-4 py-2 rounded-lg border border-tertiary/20 font-label-caps text-[10px]">
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">settings_input_component</span>
-                {t.features.modulation.sources}
-              </div>
-              <div className="flex items-center gap-2 text-secondary bg-secondary/10 px-4 py-2 rounded-lg border border-secondary/20 font-label-caps text-[10px]">
-                <span className="material-symbols-outlined text-sm" aria-hidden="true">tune</span>
-                {t.features.modulation.destinations}
+          <div className="mt-8 flex flex-wrap items-center gap-2 font-label-caps text-[10px] tracking-widest text-on-surface-variant md:mt-10">
+            <span className="rounded-full border border-primary/20 bg-primary/8 px-3 py-1.5 text-primary">DISTORTION</span>
+            <span aria-hidden="true">→</span>
+            <span className="rounded-full border border-secondary-container/20 bg-secondary-container/8 px-3 py-1.5 text-secondary-container">CHORUS</span>
+            <span aria-hidden="true">→</span>
+            <span className="rounded-full border border-secondary-container/20 bg-secondary-container/8 px-3 py-1.5 text-secondary-container">DELAY</span>
+            <span aria-hidden="true">→</span>
+            <span className="rounded-full border border-tertiary/20 bg-tertiary/8 px-3 py-1.5 text-tertiary">REVERB</span>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {effectCards.map((card) => (
+              <article key={card.number} className="glass-panel group relative min-h-72 overflow-hidden rounded-2xl p-6 md:p-8">
+                <span className="absolute right-5 top-4 font-value-mono text-5xl text-white/[0.035]" aria-hidden="true">{card.number}</span>
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl border ${card.tone}`}>
+                  <span className="material-symbols-outlined" aria-hidden="true">{card.icon}</span>
+                </div>
+                <p className="mt-8 font-label-caps text-[10px] tracking-[0.18em] text-on-surface-variant">{card.number} / 03</p>
+                <h3 className="mt-3 font-headline-md text-2xl text-on-surface">{card.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{card.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-tertiary/[0.025] py-20 md:py-32">
+        <div id="modulation" className="mx-auto w-full max-w-7xl px-panel-margin">
+          <div
+            ref={modRef}
+            className={`glass-panel relative grid min-h-[500px] items-center gap-8 overflow-hidden rounded-2xl p-6 transition-all duration-700 ease-out md:p-10 lg:grid-cols-2 lg:gap-12 ${modVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}
+          >
+            <div className="absolute inset-0 rounded-full bg-tertiary/5 blur-[150px]" aria-hidden="true" />
+            <div className="relative z-10">
+              <SectionIntro eyebrow={t.features.modulation.tag} title={t.features.modulation.title} description={t.features.modulation.description} />
+              <div className="mt-8 flex flex-wrap gap-3">
+                <div className="flex items-center gap-2 rounded-lg border border-tertiary/20 bg-tertiary/10 px-4 py-2 font-label-caps text-[10px] text-tertiary">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">settings_input_component</span>
+                  {t.features.modulation.sources}
+                </div>
+                <div className="flex items-center gap-2 rounded-lg border border-secondary/20 bg-secondary/10 px-4 py-2 font-label-caps text-[10px] text-secondary">
+                  <span className="material-symbols-outlined text-sm" aria-hidden="true">tune</span>
+                  {t.features.modulation.destinations}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="relative z-10 flex-1 w-full">
-            <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl relative glow-tertiary">
-              <img alt={t.features.modulation.imageAlt} width={800} height={450} loading="lazy" decoding="async" sizes="(min-width: 768px) 50vw, 100vw" className="w-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7PUerFQnE4PQGuZC_RdK5bNeE67IZqPrHh84xx18-cFmLrIMdjF13rSl37Wb6dBfxhiFzzAaCl4Rs33lfKwuiXd5ph6urWId0R4BvKb52O-mWc0BtGkho-ofmUuCsad-tjnbKRomfJstBLtdzUcKEU46k3eTsR_7zA_ycoQ6rlmi7qX1npgsN9-FAcaom5tdbtsgYh0iHF3tlPntcHQWSrWMlXiX8ooDwPl9l3I9zbnuL9mOjvDiOnDyLb9yOOYukObxqYNVvVww0" />
+            <div className="relative z-10 w-full">
+              <div className="glow-tertiary relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+                <img
+                  alt={t.features.modulation.imageAlt}
+                  width={800}
+                  height={450}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="w-full object-cover transition-transform duration-1000 hover:scale-[1.03]"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7PUerFQnE4PQGuZC_RdK5bNeE67IZqPrHh84xx18-cFmLrIMdjF13rSl37Wb6dBfxhiFzzAaCl4Rs33lfKwuiXd5ph6urWId0R4BvKb52O-mWc0BtGkho-ofmUuCsad-tjnbKRomfJstBLtdzUcKEU46k3eTsR_7zA_ycoQ6rlmi7qX1npgsN9-FAcaom5tdbtsgYh0iHF3tlPntcHQWSrWMlXiX8ooDwPl9l3I9zbnuL9mOjvDiOnDyLb9yOOYukObxqYNVvVww0"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

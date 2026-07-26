@@ -54,6 +54,7 @@ html {
 
 .site-skip-link:focus { transform: translateY(0); }
 
+#engine,
 #modulation,
 #effects,
 #installation {

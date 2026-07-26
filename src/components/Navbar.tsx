@@ -49,7 +49,7 @@ export function Navbar() {
         <span className="hidden lg:inline">KOSMOS</span>
       </Link>
       <div className="hidden md:flex items-center justify-center gap-3 lg:gap-6 xl:gap-8">
-        <Link to="/" aria-current={currentPage('/')} className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide py-2">{t.nav.home}</Link>
+        <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide py-2" href={path === '/' ? '#engine' : '/#engine'} onClick={handleSectionClick('#engine')}>{t.nav.engine}</a>
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide py-2" href={path === '/' ? '#effects' : '/#effects'} onClick={handleSectionClick('#effects')}>{t.nav.effects}</a>
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide py-2" href={path === '/' ? '#modulation' : '/#modulation'} onClick={handleSectionClick('#modulation')}>{t.nav.matrix}</a>
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide py-2" href={path === '/' ? '#installation' : '/#installation'} onClick={handleSectionClick('#installation')}>{t.nav.install}</a>
@@ -98,6 +98,7 @@ export function Navbar() {
       <div id="mobile-navigation" hidden={!menuOpen} className="mobile-menu-panel md:hidden absolute top-full inset-x-0 border-b border-white/10 p-3 shadow-2xl">
         <div className="grid gap-1 max-w-xl mx-auto">
           <Link ref={firstMobileLinkRef} to="/" onClick={() => setMenuOpen(false)} aria-current={currentPage('/')} className="min-h-11 px-4 rounded-lg flex items-center text-on-surface-variant hover:bg-white/5 hover:text-tertiary">{t.nav.home}</Link>
+          <a className="min-h-11 px-4 rounded-lg flex items-center text-on-surface-variant hover:bg-white/5 hover:text-tertiary" href={path === '/' ? '#engine' : '/#engine'} onClick={handleSectionClick('#engine', true)}>{t.nav.engine}</a>
           <a className="min-h-11 px-4 rounded-lg flex items-center text-on-surface-variant hover:bg-white/5 hover:text-tertiary" href={path === '/' ? '#effects' : '/#effects'} onClick={handleSectionClick('#effects', true)}>{t.nav.effects}</a>
           <a className="min-h-11 px-4 rounded-lg flex items-center text-on-surface-variant hover:bg-white/5 hover:text-tertiary" href={path === '/' ? '#modulation' : '/#modulation'} onClick={handleSectionClick('#modulation', true)}>{t.nav.matrix}</a>
           <a className="min-h-11 px-4 rounded-lg flex items-center text-on-surface-variant hover:bg-white/5 hover:text-tertiary" href={path === '/' ? '#installation' : '/#installation'} onClick={handleSectionClick('#installation', true)}>{t.nav.install}</a>

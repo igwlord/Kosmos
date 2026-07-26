@@ -24,8 +24,9 @@ export function scrollToPageSection(id: string) {
   }
 
   const availableHeight = Math.max(0, window.innerHeight - navHeight);
-  const centeredHeight = Math.min(rect.height, availableHeight * 0.72);
-  const breathingRoom = Math.max(24, (availableHeight - centeredHeight) / 2);
+  const breathingRoom = rect.height <= availableHeight
+    ? (availableHeight - rect.height) / 2
+    : 24;
   const top = Math.max(0, documentTop - navHeight - breathingRoom);
 
   window.scrollTo({
