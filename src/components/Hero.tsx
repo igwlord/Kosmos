@@ -24,7 +24,7 @@ function Callout({ edge, align, color, icon, title, sub }: CalloutProps) {
   const c = calloutColors[color];
   const chip = (
     <div className={`glass-panel rounded-xl px-4 py-3 border ${c.border} ${c.glow} w-[190px] flex items-center gap-3`}>
-      <span className={`material-symbols-outlined ${c.text} text-xl shrink-0`}>{icon}</span>
+      <span className={`material-symbols-outlined ${c.text} text-xl shrink-0`} aria-hidden="true">{icon}</span>
       <div>
         <p className={`font-label-caps text-[11px] ${c.text} tracking-widest leading-none`}>{title}</p>
         <p className="text-[11px] text-on-surface-variant mt-1 leading-snug">{sub}</p>
@@ -70,7 +70,7 @@ export function Hero() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-            <span className="font-label-caps text-[10px] text-primary tracking-widest">{t.hero.eyebrow}</span>
+            <span className="font-label-caps text-[11px] text-primary tracking-widest">{t.hero.eyebrow}</span>
           </div>
           <h1 className="font-display-lg text-5xl md:text-6xl text-on-surface leading-[1.1]">
             {t.hero.titlePrefix} <span className="text-primary italic">{t.hero.titleHighlight}</span>
@@ -82,29 +82,29 @@ export function Hero() {
             to="/download"
             className="tactile-btn text-primary font-label-caps px-8 py-4 rounded-xl glow-primary transition-all hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-3 border border-primary/20 cursor-pointer w-full sm:w-fit mt-2"
           >
-            <span className="material-symbols-outlined text-[18px]">download</span>
+            <span className="material-symbols-outlined text-[18px]" aria-hidden="true">download</span>
             {t.hero.cta}
           </Link>
-          <div className="flex items-center gap-2.5 text-on-surface-variant/70">
+          <div className="flex items-center gap-2.5 text-on-surface-variant/80">
             <WindowsIcon className="w-3.5 h-3.5" />
             <AppleIcon className="w-3.5 h-3.5" />
-            <span className="font-label-caps text-[10px] tracking-widest">{t.hero.specLine}</span>
+            <span className="font-label-caps text-[11px] tracking-widest">{t.hero.specLine}</span>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2 pt-6 border-t border-white/5">
-            <span className="flex items-center gap-1.5 font-label-caps text-[10px] text-tertiary tracking-widest">
-              <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
+            <span className="flex items-center gap-1.5 font-label-caps text-[11px] text-tertiary tracking-widest">
+              <span className="material-symbols-outlined text-[14px]" aria-hidden="true">auto_awesome</span>
               {t.hero.statPresets}
             </span>
-            <span className="flex items-center gap-1.5 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest">
-              <span className="material-symbols-outlined text-[14px]">graphic_eq</span>
+            <span className="flex items-center gap-1.5 font-label-caps text-[11px] text-on-surface-variant/80 tracking-widest">
+              <span className="material-symbols-outlined text-[14px]" aria-hidden="true">graphic_eq</span>
               {t.hero.statOsc}
             </span>
-            <span className="flex items-center gap-1.5 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest">
-              <span className="material-symbols-outlined text-[14px]">grid_on</span>
+            <span className="flex items-center gap-1.5 font-label-caps text-[11px] text-on-surface-variant/80 tracking-widest">
+              <span className="material-symbols-outlined text-[14px]" aria-hidden="true">grid_on</span>
               {t.hero.statMatrix}
             </span>
-            <span className="flex items-center gap-1.5 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest">
-              <span className="material-symbols-outlined text-[14px]">tune</span>
+            <span className="flex items-center gap-1.5 font-label-caps text-[11px] text-on-surface-variant/80 tracking-widest">
+              <span className="material-symbols-outlined text-[14px]" aria-hidden="true">tune</span>
               {t.hero.statFx}
             </span>
           </div>
@@ -120,6 +120,8 @@ export function Hero() {
               alt={t.hero.imageAlt}
               width={1024}
               height={683}
+              fetchPriority="high"
+              decoding="async"
               className="w-full rounded-xl"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_up5HYGetUoL0pCjPwxxy4emThsAskUq2ZrREMB9iivL0TA1uOcIXYpZA-dwpod0LZI7IytJQrtvNrkD_D_6O0gXE0qGhkiQH3rEBG7BF-4bOvLUVEUf3U6KFOW8feShZDTjKfXVsPdrNp_8RyEDE-7Jw8CJ3pl92F870VgPEtI3RoZUZFC7ceI1e6z_573s85WsBhbi3FmkLUPOCvTwd2xuHXv5cq8x-Mg6Uj5OFi5FarlzgLVRseRMq6G6KHGQTbCyZ9bhwqgTF"
             />

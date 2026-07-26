@@ -23,7 +23,7 @@ export function KeyboardSection({ registerSection }: ManualSectionProps) {
         <kbd>X</kbd> la sube.
       </p>
       <h3>Atajos completos</h3>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Atajos de teclado">
         <table>
           <thead>
             <tr>

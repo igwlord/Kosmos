@@ -31,7 +31,7 @@ export function MatrixSection({ registerSection }: ManualSectionProps) {
         quitar la ruta o cerrar la selección. Kosmos evita duplicados exactos.
       </p>
       <h3>Barra de herramientas</h3>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0} role="region" aria-label="Barra de herramientas de la matriz">
         <table>
           <thead>
             <tr>

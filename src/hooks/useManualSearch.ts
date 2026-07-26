@@ -1,7 +1,5 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ManualSection } from '../components/manual/manualSections';
-
-const IDLE_STATUS = 'Escribí para filtrar las secciones del manual.';
 
 const DIACRITICS_PATTERN = new RegExp('[\\u0300-\\u036f]', 'g');
 
@@ -15,12 +13,26 @@ interface UseManualSearchResult {
   registerSection: (id: string) => (node: HTMLElement | null) => void;
   handleQueryChange: (value: string) => void;
   clearQuery: () => void;
+  visibleIds: string[];
 }
 
-export function useManualSearch(sections: ManualSection[]): UseManualSearchResult {
+interface SearchCopy {
+  idle: string;
+  singular: string;
+  plural: string;
+}
+
+export function useManualSearch(sections: ManualSection[], copy: SearchCopy): UseManualSearchResult {
   const [query, setQuery] = useState('');
-  const [status, setStatus] = useState(IDLE_STATUS);
+  const [status, setStatus] = useState(copy.idle);
+  const [visibleIds, setVisibleIds] = useState(() => sections.map((section) => section.id));
   const nodesRef = useRef(new Map<string, HTMLElement>());
+
+  useEffect(() => {
+    setQuery('');
+    setStatus(copy.idle);
+    setVisibleIds(sections.map((section) => section.id));
+  }, [copy.idle, sections]);
 
   const registerSection = useCallback(
     (id: string) => (node: HTMLElement | null) => {
@@ -34,19 +46,24 @@ export function useManualSearch(sections: ManualSection[]): UseManualSearchResul
     (rawQuery: string) => {
       const normalizedQuery = normalize(rawQuery.trim());
       let visible = 0;
+      const nextVisibleIds: string[] = [];
       sections.forEach((section) => {
         const node = nodesRef.current.get(section.id);
         if (!node) return;
         const haystack = normalize(`${section.keywords} ${node.textContent ?? ''}`);
         const match = !normalizedQuery || haystack.includes(normalizedQuery);
         node.hidden = !match;
-        if (match) visible += 1;
+        if (match) {
+          visible += 1;
+          nextVisibleIds.push(section.id);
+        }
       });
+      setVisibleIds(nextVisibleIds);
       setStatus(
-        normalizedQuery ? `${visible} ${visible === 1 ? 'sección encontrada' : 'secciones encontradas'}.` : IDLE_STATUS,
+        normalizedQuery ? `${visible} ${visible === 1 ? copy.singular : copy.plural}.` : copy.idle,
       );
     },
-    [sections],
+    [copy, sections],
   );
 
   const handleQueryChange = useCallback(
@@ -62,5 +79,5 @@ export function useManualSearch(sections: ManualSection[]): UseManualSearchResul
     applyFilter('');
   }, [applyFilter]);
 
-  return { query, status, registerSection, handleQueryChange, clearQuery };
+  return { query, status, registerSection, handleQueryChange, clearQuery, visibleIds };
 }
