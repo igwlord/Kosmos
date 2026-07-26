@@ -206,29 +206,43 @@
 }
 .manual-page .toc-title { margin: 0 9px 13px; color: var(--m-purple); }
 .manual-page .toc a {
+  position: relative;
   display: block;
-  padding: 8px 10px;
+  padding: 8px 10px 8px 14px;
   margin: 1px 0;
-  border-left: 2px solid transparent;
-  border-radius: 0 7px 7px 0;
+  border-radius: 7px;
   color: #9893a1;
   text-decoration: none;
   font: 700 11px "Space Mono", monospace;
   letter-spacing: .04em;
   text-transform: uppercase;
   line-height: 1.4;
-  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease, color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
+}
+.manual-page .toc a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(0, 241, 254, .8);
+  opacity: 0;
+  transition: opacity .2s ease, box-shadow .2s ease;
 }
 .manual-page .toc a:hover {
-  border-left-color: rgba(0, 241, 254, .45);
   background: rgba(0, 241, 254, .06);
   color: var(--m-text);
 }
+.manual-page .toc a:hover::before { opacity: .45; }
 .manual-page .toc a.active {
-  border-left-color: rgba(0, 241, 254, .7);
   background: rgba(0, 241, 254, .09);
-  box-shadow: 0 0 18px -6px rgba(0, 241, 254, .55);
   color: var(--m-text);
+}
+.manual-page .toc a.active::before {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 241, 254, .7);
 }
 .manual-page .mobile-toc { display: none; }
 
