@@ -7,6 +7,7 @@ export const translations = {
       matrix: 'MATRIX',
       effects: 'EFFECTS',
       install: 'INSTALL',
+      manual: 'MANUAL',
       download: 'DOWNLOAD NOW',
     },
     hero: {
@@ -116,6 +117,7 @@ export const translations = {
       matrix: 'MATRIZ',
       effects: 'EFECTOS',
       install: 'INSTALAR',
+      manual: 'MANUAL',
       download: 'DESCARGAR',
     },
     hero: {

@@ -24,6 +24,7 @@ export function Navbar() {
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide" href={path === '/' ? '#modulation' : '/#modulation'} onClick={handleSectionClick('#modulation')}>{t.nav.matrix}</a>
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide" href={path === '/' ? '#effects' : '/#effects'} onClick={handleSectionClick('#effects')}>{t.nav.effects}</a>
         <a className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide" href={path === '/' ? '#installation' : '/#installation'} onClick={handleSectionClick('#installation')}>{t.nav.install}</a>
+        <Link to="/manual" className="text-on-surface-variant font-medium hover:text-tertiary transition-all duration-300 text-sm tracking-wide">{t.nav.manual}</Link>
       </div>
       <div className="flex items-center gap-2 md:gap-4 shrink-0">
         <div className="flex items-center rounded-lg border border-outline-variant/30 overflow-hidden font-label-caps text-[10px] md:text-[11px] tracking-widest">
