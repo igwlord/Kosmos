@@ -34,7 +34,7 @@ export function DownloadPage() {
               <p className="font-value-mono text-xs text-on-surface-variant mt-2 tracking-wide">{t.download.windowsSpec}</p>
               <p className="font-label-caps text-xs text-primary/90 mt-3 tracking-wider">{t.download.fileType}</p>
               <a
-                href="https://drive.google.com/file/d/1Y7g_ScKbKCiEvBQATEInG0FKrZs80Vgb/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1A73ga6Zkd2GQ4QipyWgc3dwOg4fECtQ6/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-describedby="download-host-note"
@@ -56,7 +56,7 @@ export function DownloadPage() {
               <p className="font-value-mono text-xs text-on-surface-variant mt-2 tracking-wide">{t.download.macSpec}</p>
               <p className="font-label-caps text-xs text-tertiary/90 mt-3 tracking-wider">{t.download.fileType}</p>
               <a
-                href="https://drive.google.com/file/d/1CvOmVePyntUq-uCGjg7E56i8qo60TpIa/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1z8Di6682JFfJrEl_7L-lKYAsKeFNT-X3/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-describedby="download-host-note"
