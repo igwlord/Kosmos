@@ -1,5 +1,11 @@
 # Reporte QA UX/UI — Kosmos Web
 
+> **INFORME HISTÓRICO DE BETA 0.1.0-beta.2.** Se conserva para trazabilidad y
+> para reutilizar sus procedimientos de QA. No usar sus enlaces, versión,
+> tamaños, métricas ni veredicto como evidencia del sitio beta.3 actual sin
+> revalidación. El contexto vigente comienza en
+> [Kosmos audits — start here](https://github.com/igwlord/Kosmos-build/blob/main/docs/audits/README.md).
+
 **Fecha:** 25 de julio de 2026  
 **Proyecto:** `C:\Users\juego\OneDrive\Escritorio\Kosmos Web`  
 **Estado evaluado:** rama `main`  

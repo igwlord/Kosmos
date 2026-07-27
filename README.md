@@ -2,6 +2,20 @@
 
 Sitio promocional del sintetizador VST3 **Kosmos**. React 19 + Vite + Tailwind CSS v4.
 
+## Contexto para auditoría
+
+La documentación técnica y el orden de lectura para una auditoría integral se
+mantienen en el repositorio de la aplicación:
+
+- [Kosmos audits — start here](https://github.com/igwlord/Kosmos-build/blob/main/docs/audits/README.md)
+- [Current product state](https://github.com/igwlord/Kosmos-build/blob/main/docs/audits/CURRENT_STATE.md)
+- [Current audit prompt](https://github.com/igwlord/Kosmos-build/blob/main/docs/audits/AUDIT_PROMPT_CURRENT.md)
+
+El archivo [`REPORTE-QA-UX-UI.md`](REPORTE-QA-UX-UI.md) conserva la auditoría
+histórica de la web beta.2. Sus procedimientos siguen siendo útiles, pero su
+versión, enlaces y veredicto deben revalidarse contra el código actual. La
+fuente vigente para las descargas es `src/pages/DownloadPage.tsx`.
+
 ## Requisitos
 
 - Node.js 20+
